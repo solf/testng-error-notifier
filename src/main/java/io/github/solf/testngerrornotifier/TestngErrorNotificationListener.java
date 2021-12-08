@@ -43,7 +43,11 @@ public class TestngErrorNotificationListener extends TestListenerAdapter
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		final String errMsg = "TESTNGFAIL: Error in test: " + tr;
-		final String sysErrMsg = "[" + Thread.currentThread() + "] " + new Date() + " " + errMsg;
+		
+		String newLine = "\n";
+		if (errMsg.endsWith("\n") || errMsg.endsWith("\r"))
+			newLine = "";
+		final String sysErrMsg = "[" + Thread.currentThread() + "] " + new Date() + " " + errMsg + newLine;
 		pw.print(sysErrMsg);
 		if (tr.getThrowable() != null)
 			tr.getThrowable().printStackTrace(pw);
