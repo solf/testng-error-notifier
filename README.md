@@ -1,0 +1,1 @@
+# testng-error-notifier
